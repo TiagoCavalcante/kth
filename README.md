@@ -18,6 +18,5 @@ Building it yourself is very easy:
 ```sh
 git clone https://github.com/TiagoCavalcante/kth
 cargo build --release
-./target/release/kth
-Hello, world!
+./target/release/kth 1 2 3
 ```
