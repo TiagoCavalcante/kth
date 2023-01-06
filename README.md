@@ -4,7 +4,7 @@ Command line tool that filters stdin lines for those who love tools that just wo
 
 ![Demo](https://user-images.githubusercontent.com/62714153/210451542-eb5e37d0-8e32-4487-a62e-c50c2a2ea9b1.gif)
 
-This tool is inspired by [nth](https://github.com/coledot/nt)
+This tool is inspired by [nth](https://github.com/coledot/nth)
 
 ## How to install?
 
