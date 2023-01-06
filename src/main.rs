@@ -23,22 +23,42 @@ fn main() {
         })
         .collect::<Vec<_>>();
 
+      let mut line_numbers_iter =
+        line_numbers.iter().peekable();
+
       let mut lines = vec![];
 
       loop {
         let mut buffer = String::new();
         match std::io::stdin().read_line(&mut buffer) {
           Ok(bytes) if bytes == 0 => break,
-          Ok(_) => lines.push(buffer.trim().to_string()),
+          Ok(_) => {
+            let line = buffer.trim();
+
+            lines.push(line.to_string());
+
+            while let Some(&&line_number) =
+              line_numbers_iter.peek()
+            {
+              if lines.len() > line_number {
+                println!("{}", lines[line_number]);
+                line_numbers_iter.next();
+              } else {
+                break;
+              }
+            }
+          }
           Err(_) => error!("Failed to read from stdin"),
         }
       }
 
-      for line_number in line_numbers {
+      while let Some(&line_number) =
+        line_numbers_iter.next()
+      {
         match lines.get(line_number) {
           Some(line) => println!("{line}"),
           None => {
-            error!("There isn't a line {line_number}")
+            error!("There isn't a line {}", line_number + 1)
           }
         }
       }
