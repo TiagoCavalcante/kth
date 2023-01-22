@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 license = "MIT"
 description = "Command line tool for filtering stdin lines that just work"
+repository = "https://github.com/TiagoCavalcante/kth"
 
 [profile.release]
 strip = true
